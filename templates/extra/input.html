@@ -1,0 +1,7 @@
+{% if valid %}
+<input type="text" hx-swap-oob="true" value="{{ value }}" name="user_email" class="form-control is-valid" id="input_response">
+<div id="response" hx-swap-oob="true" class="valid-feedback">{{ message }}</div>
+{% else %}
+<input type="text" hx-swap-oob="true" value="{{ value }}" name="user_email" class="form-control is-invalid" id="input_response">
+<div id="response" hx-swap-oob="true" class="invalid-feedback">{{ message }}</div>
+{% endif %}

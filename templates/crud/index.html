@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Title</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap"
+            rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap"
+            rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    </head>
+    
+<body style="width: 90%; margin: auto; font-family: IBM Plex Sans;" class="">
+    <form action="{{url_for('crud.send')}}" method="post" id="main_form">
+        <div class="flex justify-between">
+            <h2 class="text-3xl font-medium">Create post</h2>
+            <button type="submit" class="btn" id="send_button">Save changes</button>
+        </div>
+        
+        <fieldset class="fieldset ">
+            <legend class="text-2xl fieldset-legend">Post title</legend>
+            <input type="text" name="post_title" class="input w-full" id="" required>
+            <p class="label text-sm">Use a short and catchy one</p>
+        </fieldset>
+        <fieldset class="fieldset ">
+            <legend class="text-2xl fieldset-legend">Post description</legend>
+            <input type="text" name="post_description" class="input w-full" id="" required>
+            <p class="label text-sm">Describe in a few words your post</p>
+        </fieldset>
+        <fieldset class="fieldset ">
+            <legend class="text-2xl fieldset-legend">Post cover</legend>
+            <input type="text" name="post_cover" class="input w-full" id="" required>                    
+            <p class="label text-sm">Paste the image URL</p>
+        </fieldset>
+        <legend class="text-2xl fieldset-legend">Post content</legend>
+        <div contenteditable="true" class="textarea w-full" style="min-height: 120px;" id="contenteditable">
+    
+        </div>
+
+        <input type="text" name="" id="img_url" class="input w-full mt-2" placeholder="Post the image URL here">
+        <button class="btn block mt-2" id="addImageButton">Add image</button>
+        <input type="hidden" name="post_content" id="input_for_value">
+    </form>
+
+    <script type="module">
+        const contentEditable = document.getElementById('contenteditable');
+        const imgUrl = document.getElementById('img_url');
+        const addImageButton = document.getElementById('addImageButton');
+        addImageButton.addEventListener('click', function(event){
+            event.preventDefault();
+            const imgUrlValue = imgUrl.value;
+            if (imgUrlValue) {
+                const img = document.createElement('img');
+                const gap = document.createElement('br');
+                img.src = imgUrlValue;
+                contentEditable.appendChild(img);
+                contentEditable.appendChild(gap);
+                imgUrl.value = ''; // Clear the input field after adding the image
+            } else {
+                alert('Please enter a valid image URL.');
+            }
+        })
+        const sendButton = document.getElementById('send_button');
+        const inputForValue = document.getElementById('input_for_value');
+        sendButton.addEventListener('click', function(event){
+            getData()
+        });
+        function getData(){
+            const content = contentEditable.innerHTML;
+            console.log(content)
+            inputForValue.value = content;
+        }
+    </script>
+
+    <style>
+        img{
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+
+
+</head>
+
+
+<body style="font-family: DM Sans;">
+    <div class="w-[90%] h-screen flex justify-center items-center m-auto py-4">
+        <div class="grid grid-cols-1 h-full w-[90%] p-4 lg:grid-cols-2">
+            <div class="overflow-hidden flex justify-center hidden lg:block">
+                <img src="{{url_for('static', filename='img/phone.png.png')}}" class="h-full" alt="">
+            </div>
+            <div class="h-full relative ">
+                <h1>Create an account</h1>
+                <p>Start sharing your thougts, analysis, and more...</p>
+                <form action="{{url_for('user.register')}}" method="post">
+                    {% if error %}
+
+                    <div class="grid grid-cols-1 gap-2 lg:grid-cols-2">
+                        <!-- email input name -->
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Full name</label>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <svg class="h-5 w-5 opacity-50" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                    </svg>
+                                </div>
+                                <input placeholder="Josué Arias" name="user_name" class="form-control is-invalid"
+                                    id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div id="emailHelp" class="form-text">This will be public in every of your posts</div>
+                        </div>
+                        <!-- email input name ends -->
+                        <!-- email input -->
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <div class="input-group ">
+                                <div class="input-group-text">
+                                    <svg class="h-5 w-5 opacity-50" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                    </svg>
+                                </div>
+                                <input name="user_email" placeholder="jarias@gmail.com" class="form-control is-invalid"
+                                    id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div id="emailHelp" class="form-text">If you decide, users could contact you.</div>
+                        </div>
+                        <!-- email input end -->
+
+                    </div>
+
+                    <!--  input username -->
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Create an User ID</label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <svg class="h-5 w-5 opacity-50" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7.864 4.243A7.5 7.5 0 0 1 19.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 0 0 4.5 10.5a7.464 7.464 0 0 1-1.15 3.993m1.989 3.559A11.209 11.209 0 0 0 8.25 10.5a3.75 3.75 0 1 1 7.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 0 1-3.6 9.75m6.633-4.596a18.666 18.666 0 0 1-2.485 5.33" />
+                                </svg>
+                            </div>
+                            <input name="user_id" placeholder="@jarias123" class="form-control is-invalid" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div id="emailHelp" class="form-text  text-danger">Unique indentifier, cannot be changed.</div>
+                    </div>
+                    <!-- input username  ends -->
+
+                    <!--  input password -->
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Password</label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <svg class="h-5 w-5 opacity-50" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
+                                </svg>
+                            </div>
+                            <input name="user_password" class="form-control is-invalid" id="exampleInputEmail1"
+                                placeholder="secret123" aria-describedby="emailHelp">
+                        </div>
+                        <div id="emailHelp" class="form-text">Use a secure password</div>
+                    </div>
+                    <!--  input password ends -->
+
+                    <button class="btn btn-dark w-full">Create account</button>
+                    <div id="emailHelp" class="form-text text-danger">{{ error }}</div>
+
+                    {% else %}
+
+                    <div class="grid grid-cols-1 gap-2 lg:grid-cols-2">
+                        <!-- email input name -->
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Full name</label>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <svg class="h-5 w-5 opacity-50" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                    </svg>
+                                </div>
+                                <input name="user_name" placeholder="Josué Arias" class="form-control"
+                                    id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div id="emailHelp" class="form-text">This will be public in every of your posts</div>
+                        </div>
+                        <!-- email input name ends -->
+                        <!-- email input -->
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <div class="input-group ">
+                                <div class="input-group-text">
+                                    <svg class="h-5 w-5 opacity-50" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                    </svg>
+                                </div>
+                                <input name="user_email" placeholder="jarias@gmail.com" class="form-control"
+                                    id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div id="emailHelp" class="form-text">If you decide, users could contact you.</div>
+                        </div>
+                        <!-- email input end -->
+
+                    </div>
+                    <!-- email input username -->
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Create an User ID</label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <svg class="h-5 w-5 opacity-50" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7.864 4.243A7.5 7.5 0 0 1 19.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 0 0 4.5 10.5a7.464 7.464 0 0 1-1.15 3.993m1.989 3.559A11.209 11.209 0 0 0 8.25 10.5a3.75 3.75 0 1 1 7.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 0 1-3.6 9.75m6.633-4.596a18.666 18.666 0 0 1-2.485 5.33" />
+                                </svg>
+                            </div>
+                            <input name="user_id" placeholder="@jarias123" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div id="emailHelp" class="form-text">Unique indentifier, cannot be changed.</div>
+                    </div>
+                    <!-- email input username  ends -->
+                    <!-- email input password -->
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Password</label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <svg class="h-5 w-5 opacity-50" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
+                                </svg>
+                            </div>
+                            <input name="user_password" class="form-control" id="exampleInputEmail1"
+                                placeholder="secret123" aria-describedby="emailHelp">
+                        </div>
+                        <div id="emailHelp" class="form-text">Use a secure password</div>
+                    </div>
+                    <!-- email input password ends -->
+
+                    <button class="btn btn-dark w-full">Create account</button>
+                    {% endif %}
+                    <p class="w-full text-center absolute bottom-0">Already have an account? <a href="{{url_for('user.login')}}"
+                        class="link link-dark">Login</a></p>
+                </form>
+
+
+            </div>
+        </div>
+        <style>
+            .form-control:focus {
+                border-color: black !important;
+            }
+
+            .form-control:focus {
+                border-color: black !important;
+                box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25) !important;
+            }
+        </style>
+    </div>
+
+</body>
+
+</html>

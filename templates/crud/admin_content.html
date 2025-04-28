@@ -1,0 +1,25 @@
+<div class="">
+    <div class="flex items-center justify-between pb-4">
+        <h2 class="text-3xl font-medium">Your posts:</h2>
+    </div>
+    {% if data %}
+    {% for post in data %}
+    <div class="card card-side bg-base-100 shadow-sm w-full h-52 mb-2">
+        <figure>
+            <img src="{{ post[8] }}" class="w-86" alt="Movie" />
+        </figure>
+        <div class="card-body">
+            <h2 class="card-title">{{ post[3] }}</h2>
+            <p>{{ post[4] }}</p>
+            <div class="card-actions justify-end">
+                <a hx-get="{{url_for('crud.edit', post_id=post[7])}}" hx-target="#content" class="btn">Edit</a>
+                <a href="{{url_for('user.post', post_id=post[7])}}" class="btn btn-neutral">Read</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>Looks like you don't have created any post yet, <a href="{{url_for('crud.add')}}" class="">create your
+            first post</a></p>
+    {% endif %}
+</div>

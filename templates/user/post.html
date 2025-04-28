@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Post</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+
+
+<body style="width: 90%; height: 100vh; margin: auto; font-family: DM Sans;" class="">
+    <div class="mt-4">
+        {% for post in data %}
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item text-sm"><a href="{{url_for('user.profile', user_id=post[2])}}"
+                        class="link link-dark">@{{ post[2] }}</a></li>
+                <li class="breadcrumb-item text-sm" aria-current="page">{{ post[3] }}</li>
+            </ol>
+        </nav>
+        <h2>{{ post[3] }}</h2>
+        <p class="text-sm">Por:
+            <a href="{{url_for('user.profile', user_id=post[2])}}" class="link link-dark "> {{ user_info[0][2] }}</a>
+        </p>
+        <h5>{{ post[4] }}</h5>
+        <p>{{ content | safe }}</p>
+        <hr>
+        <div class="card !border-none">
+            <div class="card-body  !p-0">
+                <h5 class="card-title">Suscríbete a {{ user_info[0][2] }}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Para recibir información, noticias, analisis</h6>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
+                    <div class="input-group ">
+                        <div class="input-group-text">
+                            <svg class="h-5 w-5 opacity-50" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                            </svg>
+                        </div>
+                        <input name="user_email" placeholder="jarias@gmail.com" class="form-control"
+                            id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <button class="btn btn-sm btn-dark">Suscribirme</button>
+                    </div>
+                    <div id="emailHelp" class="form-text">A este correo te enviaré notas, información, analisis, sobre temas nacionales, y económicos.</div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <style>
+        img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        @media screen and (min-width: 1024px) {
+
+            /* Estilos solo para pantallas de PC (desde 1024px en adelante) */
+            img {
+                width: 70%;
+                height: 450px;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</body>
+
+</html>

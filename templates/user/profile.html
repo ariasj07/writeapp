@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Title</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap"
+            rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap"
+            rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    </head>
+    
+<body style="width: 90%; margin: auto; font-family: Space Grotesk;" class="">
+    <div class="p-4 my-2">
+        <h2 class="text-3xl font-medium">{{ user_info[0][2] }}</h2>
+        <p class="font-base">User's recent posts:</p>
+    {% if data %}
+    {% for post in data %}
+    <div class="card card-side bg-base-100 shadow-sm w-full h-52 mb-2">
+        <figure>
+            <img src="{{ post[8] }}" class="w-86" alt="Movie" />
+        </figure>
+        <div class="card-body">
+            <h2 class="card-title">{{ post[3] }}</h2>
+            <p>{{ post[4] }}</p>
+            <div class="card-actions justify-end">
+                <a href="{{url_for('user.post', post_id=post[7])}}" class="btn btn-neutral">Read</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>This user has not created any post yet</a></p>
+    {% endif %}
+    </div>
+
+</body>
+</html>

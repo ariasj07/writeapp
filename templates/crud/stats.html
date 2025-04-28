@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+
+<body style="margin: auto; font-family: IBM Plex Sans;" class="">
+    <div class="">
+        <h2 class="text-3xl font-medium">Analytics:</h2>
+        <p>Here you'll see all the user who have suscribed to your posts</p>
+        {% if data %}
+        <div class="stats stats-vertical lg:stats-horizontal shadow w-full my-2">
+            <div class="stat">
+                <div class="stat-title text-sm">Users suscribed</div>
+                <div class="stat-value">{{ users }}</div>
+                <div class="stat-desc">There are {{ users }} users suscribed!</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-title">Page views</div>
+                <div class="stat-value">0</div>
+                <div class="stat-desc">That is 0 views per day!</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-title">New paid users</div>
+                <div class="stat-value">0</div>
+                <div class="stat-desc">You have 0 users that love your content!</div>
+            </div>
+        </div>
+        <!-- table -->
+        <h2 class="text-2xl font-medium">All users suscribed:</h2>
+        <div class="overflow-x-auto rounded-box my-4 max-h-86 overflow-y-auto">
+            <table class="table table-xs">
+                <!-- head -->
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>User email</th>
+                        <th>Suscribed date</th>
+                        <th>Suscribed on</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- row 1 -->
+                    {% for user in data %}
+                    <tr class="">
+                        <th>{{ loop.index }}</th>
+                        <td>{{ user[1] }}</td>
+                        <td>{{ user[4] }}</td>
+                        <td>{{ user[3] }}</td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="stats stats-vertical lg:stats-horizontal shadow w-full my-2">
+            <div class="stat">
+                <div class="stat-title text-sm">Users suscribed</div>
+                <div class="stat-value">0</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-title">Page views</div>
+                <div class="stat-value">0</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-title">New paid users</div>
+                <div class="stat-value">0</div>
+            </div>
+        </div>
+        <!-- table -->
+        <h2 class="text-2xl font-medium">All users suscribed:</h2>
+        {% endif %}
+
+        <!-- end table -->
+        <div class="join">
+            <button class="btn font-xs btn-sm join-item">Download all users email .xlsx</button>
+            <button class="btn font-xs btn-sm join-item">Download full report</button>
+        </div>
+    </div>
+</body>
+
+
+</html>
