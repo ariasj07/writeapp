@@ -15,7 +15,7 @@
                                 </div>
                                 <div class="mt-auto d-flex justify-content-end gap-2 pt-3">
                                     <a href="" class="btn btn-secondary btn-sm">Delete post</a>
-                                    <a hx-get="{{url_for('crud.edit', post_id=post[7])}}" hx-push-url="true" class="btn btn-primary btn-sm">Edit post</a>
+                                    <a hx-get="{{url_for('crud.edit', post_id=post[7])}}" hx-target="#content" class="btn btn-primary btn-sm">Edit post</a>
                                     <a href="{{url_for('user.post', post_id=post[7])}}"  class="btn btn-dark btn-sm">Read</a>
                                 </div>
                             </div>

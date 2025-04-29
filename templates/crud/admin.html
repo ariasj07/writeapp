@@ -38,7 +38,7 @@
                     </svg>
                     Overview
                 </a>
-                <a hx-get="{{url_for('crud.create')}}" hx-target="#content" hx-push-url="true"
+                <a hx-get="{{url_for('crud.create')}}" hx-target="#content" 
                     class="menu-item link link-underline link-underline-opacity-0  flex items-center gap-2 p-2 rounded-lg text-sm hover:bg-gray-100 cursor-pointer">
                     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -89,7 +89,7 @@
                         </svg>
                         Overview
                     </a>
-                    <a hx-get="{{url_for('crud.create')}}" hx-target="#content" hx-push-url="true"
+                    <a hx-get="{{url_for('crud.create')}}" hx-target="#content" 
                         class="menu-item link link-underline link-underline-opacity-0 mb-1 flex items-center gap-2 p-2 text-sm hover:bg-gray-100 cursor-pointer">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -142,7 +142,7 @@
                                 <div class="mt-auto d-flex justify-content-end gap-2 pt-3">
                                     <a href="" class="btn btn-secondary btn-sm">Delete post</a>
                                     <a hx-get="{{url_for('crud.edit', post_id=post[7])}}" hx-target="#content"
-                                        hx-push-url="true" class="btn btn-primary btn-sm">Edit post</a>
+                                         class="btn btn-primary btn-sm">Edit post</a>
                                     <a href="{{url_for('user.post', post_id=post[7])}}"
                                         class="btn btn-dark btn-sm">Read</a>
                                 </div>
