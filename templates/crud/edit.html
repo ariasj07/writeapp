@@ -1,65 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Title</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-            rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap"
-            rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap"
-            rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    </head>
-    
-<body style="width: 90%; margin: auto; font-family: IBM Plex Sans;" class="">
-    <form action="{{url_for('crud.update', post_id=data[0][7])}}" method="post" id="main_form">
-        <div class="flex justify-between">
-            <h2 class="text-3xl font-medium">Edit post</h2>
-            <button type="submit" class="btn" id="send_button">Save changes</button>
-        </div>
-        
-        <fieldset class="fieldset ">
-            <legend class="text-2xl fieldset-legend">Post title</legend>
-            <input type="text" name="post_title" value="{{ data[0][3] }}" class="input w-full" id="" required>
-            <p class="label text-sm">Use a short and catchy one</p>
-        </fieldset>
-        <fieldset class="fieldset ">
-            <legend class="text-2xl fieldset-legend">Post description</legend>
-            <input type="text" value="{{ data[0][4] }}" name="post_description" class="input w-full" id="" required>
-            <p class="label text-sm">Describe in a few words your post</p>
-        </fieldset>
-        <fieldset class="fieldset ">
-            <legend class="text-2xl fieldset-legend">Post cover</legend>
-            <input type="text" value="{{ data[0][8] }}" name="post_cover" class="input w-full" id="" required>                    
-            <p class="label text-sm">Paste the image URL</p>
-        </fieldset>
-        <legend class="text-2xl fieldset-legend">Post content</legend>
-        <div contenteditable="true" class="textarea w-full" style="min-height: 120px;" id="contenteditable">
-            {{ data[0][5] | safe }}
-        </div>
 
-        <input type="text" name="" id="img_url" class="input w-full mt-2" placeholder="Post the image URL here">
-        <button class="btn block mt-2" id="addImageButton">Add image</button>
-        <input type="hidden" name="post_content" id="input_for_value">
-    </form>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+
+</head>
+
+<body style="width: 90%; margin: auto; font-family: IBM Plex Sans;" class="">
+    <div >
+        <form action="{{url_for('crud.update', post_id=data[0][7])}}" method="post" id="main_form">
+            <div class="flex justify-between items-center">
+                <h1>Edit post</h1>
+                <button type="submit" class="btn btn-dark" id="send_button">Save changes</button>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Post title</label>
+                <input type="text" name="post_title" value="{{ data[0][3] }}" class="form-control" id="" required>
+                <div id="emailHelp" class="form-text">Use a short and catchy one</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Post description</label>
+                <input type="text" value="{{ data[0][4] }}" name="post_description" class="form-control" id="" required>
+                <div id="emailHelp" class="form-text">Describe in a few words your post</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Post cover</label>
+                <input type="text" value="{{ data[0][8] }}" name="post_cover" class="form-control" id="" required>
+                <div id="emailHelp" class="form-text">Paste the image URL</div>
+            </div>
+    
+            <label for="exampleInputEmail1" class="form-label">Post content</label>
+            <div contenteditable="true" class="form-control p-2 w-full mb-3" style="min-height: 120px;"
+                id="contenteditable">
+                {{ data[0][5] | safe }}
+            </div>
+    
+            <input type="text" class="form-control" id="img_url" placeholder="Post the image URL here">
+            <button class="btn btn-dark mt-3" id="addImageButton">Add image</button>
+            <input type="hidden" name="post_content" id="input_for_value">
+        </form>
+    </div>
+    
 
     <script type="module">
         const contentEditable = document.getElementById('contenteditable');
         const imgUrl = document.getElementById('img_url');
         const addImageButton = document.getElementById('addImageButton');
-        addImageButton.addEventListener('click', function(event){
+        addImageButton.addEventListener('click', function (event) {
             event.preventDefault();
             const imgUrlValue = imgUrl.value;
             if (imgUrlValue) {
@@ -75,10 +79,10 @@
         })
         const sendButton = document.getElementById('send_button');
         const inputForValue = document.getElementById('input_for_value');
-        sendButton.addEventListener('click', function(event){
+        sendButton.addEventListener('click', function (event) {
             getData()
         });
-        function getData(){
+        function getData() {
             const content = contentEditable.innerHTML;
             console.log(content)
             inputForValue.value = content;
@@ -86,11 +90,21 @@
     </script>
 
     <style>
-        img{
+        img {
             width: 200px;
             height: 200px;
             object-fit: cover;
         }
+
+        .form-control:focus {
+            border-color: black !important;
+        }
+
+        .form-control:focus {
+            border-color: black !important;
+            box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25) !important;
+        }
     </style>
 </body>
+
 </html>

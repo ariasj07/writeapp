@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, Blueprint, session, Response
+from flask import Flask, render_template, request, redirect, url_for, Blueprint, session, Response, make_response
 crud = Blueprint('crud', __name__)
 from modules import SQLiteasy
 from functools import wraps
@@ -111,7 +111,10 @@ def dashboard():
 @check_user # <- imported from route.py. It checks whether the user has a session logged in or not. if so it will call the below function, if not it will call for the register template
 def create(): # <- Loads the create page
     user_id = session.get("user_id")
-    return render_template("./crud/index.html")
+    if request.headers.get("HX-Request"):
+        return render_template("./crud/index.html")
+    else:
+        return redirect(url_for('crud.admin'))
 
 @crud.route("/stats")
 @check_user # <- imported from route.py. It checks whether the user has a session logged in or not. if so it will call the below function, if not it will call for the register template
@@ -130,7 +133,11 @@ def edit(post_id):
     else:
         raise ValueError("Post not found")
     if creator == session.get("user_id"):
-        return render_template("./crud/edit.html", data=post_created_by)
+        if request.headers.get("HX-Request"):
+            return render_template("./crud/edit.html", data=post_created_by)
+        else:
+            print("******")
+            return redirect(url_for('crud.admin'))
     else:
         return ValueError("You don't have access to this section")
     

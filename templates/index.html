@@ -34,24 +34,14 @@
                     <img src="{{url_for('static', filename='logo2.png')}}" class="w-full h-full object-contain" alt="">
                 </div>
                 <ul class="hidden md:flex gap-3 !mb-0">
-                    <div class="dropdown">
-                        <button class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Features
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Creating posts</a></li>
-                            <li><a class="dropdown-item" href="#">Users suscribed</a></li>
-                            <li><a class="dropdown-item" href="#">Extra functions</a></li>
-                        </ul>
-                    </div>
                     <li>
-                        <a href="" class="link link-dark">About us</a>
+                        <a class="link link-dark" href="#features">Features</a>
                     </li>
                     <li>
-                        <a href="" class="link link-dark">Pricing</a>
+                        <a class="link link-dark" href="#pricing">Pricing</a>
                     </li>
                     <li>
-                        <a href="" class="link link-dark">Contact</a>
+                        <a class="link link-dark" href="#aboutus">About us</a>
                     </li>
                 </ul>
                 <ul class="flex md:hidden gap-3 !mb-0">
@@ -60,10 +50,10 @@
                             Menu
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Features</a></li>
-                            <li><a class="dropdown-item" href="#">About us</a></li>
-                            <li><a class="dropdown-item" href="#">Pricing</a></li>
-                            <li><a class="dropdown-item" href="#">Contact</a></li>
+                            <li><a class="dropdown-item" href="#features">Features</a></li>
+                            <li><a class="dropdown-item" href="#aboutus">About us</a></li>
+                            <li><a class="dropdown-item" href="#pricing">Pricing</a></li>
+                            <li><a class="dropdown-item" href="#contact">Contact</a></li>
                         </ul>
                     </div>
                 </ul>
@@ -75,11 +65,11 @@
                     analisys, etc... But in a really easy way</h5>
                 <div class="flex gap-2 w-full justify-center mt-4">
                     <a class="btn btn-dark" href="{{url_for('crud.admin')}}">Get started</a>
-                    <button class="btn btn-primary">Read more</button>
+                    <a href="#start" class="btn btn-primary">Read more</a>
                 </div>
                 <div class="flex gap-2 justify-center mt-3">
                 </div>
-                <div class="w-full">
+                <div class="w-full" id="start">
                     <h2 class="text-center mt-3">Create your own post</h2>
                     <p class="text-center">Up to 50 posts on the free plan</p>
                     <img src="{{url_for('static', filename='img/0.png')}}" class="w-full md:h-96 object-contain" alt="">
@@ -93,7 +83,7 @@
                     <p class="text-center">See all the suscribed users, page visitis, and more</p>
                     <img src="{{url_for('static', filename='img/3.png')}}" class="w-full md:h-96 object-contain" alt="">
                     <!-- Features start -->
-                    <h1 class="text-center display-5 mt-4">Features</h1>
+                    <h1 class="text-center display-5 mt-4" id="features">Features</h1>
                     <h5 class="text-center">Discover what we have to offer you</h5>
                     <div class="grid grid-cols-1 lg:grid-cols-3 grid-rows-2 gap-3 py-2">
                         <div class="card bg-red-500">
@@ -202,7 +192,7 @@
                         </div>
                     </div>
                     <!-- Pricing starts -->
-                    <h1 class="text-center display-5 mt-4">Pricing</h1>
+                    <h1 class="text-center display-5 mt-4" id="pricing">Pricing</h1>
                     <h5 class="text-center">Forget monthly suscriptions, buy a plan based on your needs</h5>
                     <div class="grid grid-cols-1 lg:grid-cols-3 pt-4 gap-3">
                         <!-- Card 1 -->
@@ -392,7 +382,7 @@
 
                     <!-- Pricing ends -->
                     <!-- About us starts  -->
-                    <h1 class="text-center display-5 mt-4">About us</h1>
+                    <h1 class="text-center display-5 mt-4" id="aboutus">About us</h1>
                     <h5 class="text-center">Discover how all this started</h5>
                     <figure class="text-center py-2">
                         <blockquote class="blockquote">
