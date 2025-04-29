@@ -28,7 +28,10 @@
         <form action="{{url_for('crud.update', post_id=data[0][7])}}" method="post" id="main_form">
             <div class="flex justify-between items-center">
                 <h1>Edit post</h1>
-                <button type="submit" class="btn btn-dark" id="send_button">Save changes</button>
+                <div>
+                    <a href="{{url_for('crud.admin')}}" class="btn btn-secondary btn-sm mr-2">Cancel</a>
+                    <button type="submit" class="btn btn-dark btn-sm" id="send_button">Save changes</button>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Post title</label>

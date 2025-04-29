@@ -26,7 +26,10 @@
     <form action="{{url_for('crud.send')}}" method="post" id="main_form">
         <div class="flex justify-between items-center">
             <h1>Create post</h1>
-            <button type="submit" class="btn btn-dark" id="send_button">Upload</button>
+            <div>
+                <a href="{{url_for('crud.admin')}}" class="btn btn-secondary btn-sm mr-2">Cancel</a>
+                <button type="submit" class="btn btn-dark btn-sm" id="send_button">Create</button>
+            </div>
         </div>
 
         <div class="mb-3">
