@@ -159,6 +159,15 @@ class SQLiteasy:
             print("An error occurred:", e)
         finally:
             conn.close()
+    def delete_database_row_by(self, condition_column, condition_value):
+        conn = sqlite3.connect(f"{self.database_name}.db")
+        cursor = conn.cursor()
+        try:
+            cursor.execute(f"DELETE FROM {self.database_name} WHERE {condition_column} = ?", (condition_value,))
+        except:
+            print("SQLiteasy: Something went wrong, check if the column exists, or if the condition exists on the given column")
+        conn.commit()
+        conn.close()
 
 
 
@@ -166,5 +175,13 @@ class SQLiteasy:
     "user_name": {"type": "string", "notnull": True},
     "user_email": {"type": "string", "notnull": True},
     "user_isregistered": {"type": "boolean", "notnull": False},
-}
-"""
+} """
+
+""" test_db = SQLiteasy("test", entries_to_test)
+test_db.create_database()
+#test_db.insert_database(user_name="josue", user_email="a@gmail.com", user_isregistered="0")
+#test_db.insert_database(user_name="arias", user_email="b@gmail.com", user_isregistered="1")
+#test_db.insert_database(user_name="gauna", user_email="c@gmail.com", user_isregistered="2")
+#test_db.insert_database(user_name="aborrar", user_email="d@gmail.com", user_isregistered="3")
+test_db.delete_database_row_by("user_name", "arias")
+test_db.fetch_database(indent=True) """

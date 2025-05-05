@@ -1,7 +1,35 @@
 {% if valid %}
-<input type="text" hx-swap-oob="true" value="{{ value }}" name="user_email" class="form-control is-valid" id="input_response">
-<div id="response" hx-swap-oob="true" class="valid-feedback">{{ message }}</div>
+<div class="mb-3" id="content_form">
+    <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
+    <div class="input-group" id="">
+        <div class="input-group-text">
+            <svg class="h-5 w-5 opacity-50" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+            </svg>
+        </div>
+        <input name="user_email" value="{{ value }}" placeholder="jarias@gmail.com" class="form-control is-valid"
+            id="exampleInputEmail1" aria-describedby="emailHelp">
+        <button class="btn btn-sm btn-dark">Suscribirme</button>
+    </div>
+    <div id="emailHelp" class="form-text text-success">{{ message }}</div>
+</div>
 {% else %}
-<input type="text" hx-swap-oob="true" value="{{ value }}" name="user_email" class="form-control is-invalid" id="input_response">
-<div id="response" hx-swap-oob="true" class="invalid-feedback">{{ message }}</div>
+<div class="mb-3" id="content_form">
+    <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
+    <div class="input-group" id="">
+        <div class="input-group-text">
+            <svg class="h-5 w-5 opacity-50" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+            </svg>
+        </div>
+        <input name="user_email" value="{{ value }}" placeholder="jarias@gmail.com" class="form-control is-invalid"
+            id="exampleInputEmail1" aria-describedby="emailHelp">
+        <button class="btn btn-sm btn-dark">Suscribirme</button>
+    </div>
+    <div id="emailHelp" class="form-text text-danger">{{ message }}</div>
+</div>
 {% endif %}

@@ -38,7 +38,7 @@
                     </svg>
                     Overview
                 </a>
-                <a hx-get="{{url_for('crud.create')}}" hx-target="#content" 
+                <a hx-get="{{url_for('crud.create')}}" hx-target="#content"
                     class="menu-item link link-underline link-underline-opacity-0  flex items-center gap-2 p-2 rounded-lg text-sm hover:bg-gray-100 cursor-pointer">
                     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -49,7 +49,7 @@
             </ul>
             <h5>Profile</h5>
             <ul class="!p-0 !px-2 flex flex-col gap-2">
-                <a
+                <a hx-get="{{url_for('crud.profile')}}" hx-target="#content"
                     class="menu-item link link-underline link-underline-opacity-0  flex items-center gap-2 p-2 rounded-lg text-sm hover:bg-gray-100 cursor-pointer">
                     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -59,7 +59,7 @@
                     </svg>
                     Profile settings
                 </a>
-                <a
+                <a hx-get="{{url_for('crud.stats')}}" hx-target="#content"
                     class="menu-item link link-underline link-underline-opacity-0 flex items-center gap-2 p-2 rounded-lg text-sm hover:bg-gray-100 cursor-pointer">
                     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -89,7 +89,7 @@
                         </svg>
                         Overview
                     </a>
-                    <a hx-get="{{url_for('crud.create')}}" hx-target="#content" 
+                    <a hx-get="{{url_for('crud.create')}}" hx-target="#content"
                         class="menu-item link link-underline link-underline-opacity-0 mb-1 flex items-center gap-2 p-2 text-sm hover:bg-gray-100 cursor-pointer">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -100,7 +100,7 @@
                     <li>
                         <h6 class="dropdown-header">Profile</h6>
                     </li>
-                    <a
+                    <a hx-get="{{url_for('crud.profile')}}" hx-target="#content"
                         class="menu-item link link-underline link-underline-opacity-0  flex items-center mb-1 gap-2 p-2 text-sm hover:bg-gray-100 cursor-pointer">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -111,7 +111,7 @@
                         </svg>
                         Profile settings
                     </a>
-                    <a
+                    <a hx-get="{{url_for('crud.stats')}}" hx-target="#content"
                         class="menu-item link link-underline link-underline-opacity-0 flex items-center gap-2 p-2 mb-1  text-sm hover:bg-gray-100 cursor-pointer">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -124,6 +124,7 @@
             </div>
         </div>
         <div class="p-4 overflow-scroll h-screen" id="content">
+            {% if data%}
             <h1>All posts:</h1>
             <p>Edit, read, or delete your created posts</p>
             <div class="cards flex flex-col gap-3">
@@ -140,9 +141,12 @@
                                     <p class="card-text">{{ post[4] }}</p>
                                 </div>
                                 <div class="mt-auto d-flex justify-content-end gap-2 pt-3">
-                                    <a href="" class="btn btn-secondary btn-sm">Delete post</a>
+                                    <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Delete post
+                                    </button>
                                     <a hx-get="{{url_for('crud.edit', post_id=post[7])}}" hx-target="#content"
-                                         class="btn btn-primary btn-sm">Edit post</a>
+                                        class="btn btn-primary btn-sm">Edit post</a>
                                     <a href="{{url_for('user.post', post_id=post[7])}}"
                                         class="btn btn-dark btn-sm">Read</a>
                                 </div>
@@ -151,11 +155,40 @@
                     </div>
                 </div>
 
-
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete post</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            This action cannot be undone
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                            <a href="{{url_for('crud.delete', post_id=post[7])}}" class="btn btn-dark btn-sm">Delete post</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
                 {% endfor %}
             </div>
+            {% else %}
+            <h1>All posts:</h1>
+            <p>You haven't created any post yet.</p>
+            {% endif %}
+            <!-- Button trigger modal -->
+
+
+
+
+
         </div>
     </div>
+
     <style>
         .active {
             background-color: #000;
